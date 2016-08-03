@@ -1,0 +1,15 @@
+.trending-hashtags {
+  a.hashtag {
+    padding: 1px 4px 2px;
+    line-height: 2em;
+    margin: 0 1px;
+    border-radius: 2px;
+    @include transition(all .1s ease-in-out);
+
+    &:hover {
+      color: white;
+      text-decoration: none;
+      background-color: $red;
+    }
+  }
+}

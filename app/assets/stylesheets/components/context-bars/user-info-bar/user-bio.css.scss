@@ -1,0 +1,59 @@
+.user-bio {  
+  p, textarea {
+    width: 100%;
+    color: white;
+    word-break: break-word;
+  }
+
+  .ghost-btn {
+    margin-left: 6px;
+  }
+
+  textarea {
+    background-color: transparent;
+    border: 1px white solid;
+    padding: 5px 8px;
+    resize: none;
+  }
+
+  a.edit-bio-btn {
+    color: $light-grey;
+    display: inline-block;
+    margin-left: 5px;
+    text-decoration: none;
+    padding: 2px 5px;
+
+    &.no-bio {
+      display: block;
+      color: #ccc;
+      margin-left: 0;
+    }
+
+    &:hover {
+      color: white;
+    }
+
+    i.fa-pencil {
+      margin-right: 6px;
+    }
+    
+    &:hover {
+      background-color: grey;
+    }
+
+  }
+
+  .new-popover {
+    position: absolute;
+    
+    p {
+      color: black;
+      margin: 0;
+    }
+
+    a.ghost-btn {
+      float: right;
+      margin: 10px 0;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@import "compass/css3/user-interface";
+
+.media-controls {
+  height: $footer-player-height - $seek-bar-height;
+  @include user-select(none);
+  text-align: center;
+
+  i {
+    color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: none;
+      opacity: .75;
+    }
+  }
+
+  .back-btn, .next-btn {
+    $back-next-btn-height: 22px;
+    padding: (($footer-player-height - $seek-bar-height - $back-next-btn-height) / 2) 0;
+    font-size: $back-next-btn-height;
+    vertical-align:middle;
+  }
+
+  .back-btn {
+    padding-right: 12px;
+  }
+  .next-btn {
+    padding-left: 12px;
+  }
+
+  .play-btn {
+    font-size: 24px;
+    line-height: 44px;
+    padding: 0 12px;
+    vertical-align: middle;
+    background: rgba(0, 0, 0, 0.2);
+    border: 3px solid #FFFFFF;
+    border-radius: 42px;
+    width: 50px;
+    height: 50px;
+
+    &.fa-play:before {
+      padding-left: 3px;
+    }
+  }
+}

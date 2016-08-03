@@ -1,0 +1,12 @@
+.feed {
+  .no-posts {
+    position: fixed;
+    width: 650px;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    margin-left: -325px;
+    color: white;
+    @include text-shadow(1px 1px rgba(33, 33, 33, 0.5));
+  }
+}

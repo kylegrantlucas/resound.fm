@@ -1,0 +1,171 @@
+@import "compass/css3/user-interface";
+
+$track-media-size : 125px;
+$card-padding     : 20px;
+$user-icon-size   : 50px;
+
+.big-card {
+  width: $card-width;
+  min-height: 275px;
+  margin: 20px auto;
+  background-color: white;
+  position: relative;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  
+  .extra-info-bar {
+    @include text-shadow(0 0 5px rgba(33,33,33, 0.4));
+    @include hoverOpacity(0.85, 1);
+    position: relative;
+    display: block;
+    margin-bottom: $card-padding;
+    height: 20px;
+    cursor: default;
+
+    i {
+      font-size: 1.2em;
+      color: $repost-color;
+      vertical-align: bottom;
+      margin-bottom: 2px;
+      margin-right: 6px;
+    }
+
+    p {
+      color: white;
+      letter-spacing: 0.025em;
+    }
+
+    .user-name {
+      color: white;
+      font-weight: 800;
+    }
+  }
+
+  .top-half {
+    position: relative;
+    padding: $card-padding;
+    overflow: hidden;
+    background-color: black;
+
+    &:hover {
+      .track-media .overlay {
+        opacity: 1;
+        cursor: pointer;
+      }
+    }
+
+    .broken-track-error {
+      @include fill-container();
+      background-color: rgba(0,0,0,0.75);
+      z-index: 5;
+
+      i {
+        margin-right: 15px;
+      }
+
+      p {
+        color: rgba(255,255,255,0.75);
+        font-size: 3em;
+        text-align: center;
+        font-weight: 600;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        margin-top: -30px;
+      }
+
+      // Hack to prevent track-media from showing play symbol on hover when broken
+      &:hover {
+        & + .track-media .overlay {
+          opacity: inherit;
+          cursor: inherit;
+        }
+      }
+    }
+
+    // Background art/color
+    .blurred-art {
+      @include posAbsolute(-150px, 0, null, 0);
+      width: $card-width;
+      height: $card-width;
+      opacity: 0.8;
+
+      &:before {
+        @include fill-container();
+        content: "";
+        background-color: black;
+      }
+    }
+
+    // Dark overlay
+    .theBlackness {
+      @include fill-container();
+      background-color: rgba(0,0,0, 0.15);
+    }
+
+    // Album art
+    .track-media {
+      @include posAbsolute(null, null, $card-padding, $card-padding);
+      box-shadow: 0 0 15px rgba(33,33,33,0.2);
+    }
+
+    // Track info
+    .track-info {
+      display: block;
+      height: $track-media-size;
+      padding: ($card-padding/2 - 2px) $card-padding ($card-padding/2 - 2px) ($track-media-size + $card-padding);
+
+      .duration-badge {
+        position: absolute;
+        bottom: 0;
+      }
+    }
+
+    .track-source {
+      position: absolute;
+      width: 60px; // minimum allowed by YouTube and Soundcloud
+      bottom: 20px;
+      right: 20px;
+      opacity: 0.5;
+      color: white;
+      
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .bottom-half {
+    min-height: 150px;
+  }
+
+  .trending-pos {
+    position: absolute;
+    height: 80px;
+    padding: 0 25px;
+    top: 20px;
+    right: $card-width + 20px;
+    border-radius: 999rem;
+    background-color: white;
+    opacity: 0.8;
+    @include user-select(none);
+
+    p {
+      position: relative;
+      margin: 0;
+      color: white;
+      text-align: center;
+      padding: 3px 2px 0 0;
+      font-size: 50px;
+      font-weight: 100;
+    }
+
+    &:before {
+      @include fill-container();
+      border-radius: 999rem;
+      content: "";
+      background-color: rgba(0,0,0, 0.35);
+    }
+  }
+}

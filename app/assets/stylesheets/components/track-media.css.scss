@@ -1,0 +1,90 @@
+$track-media-size: 200px;
+
+.track-media {
+  width: $track-media-size;
+  height: $track-media-size;
+  position: relative;
+  float: left;
+
+  img {
+    height: 100%;
+    width: 100%;
+  }
+
+  .spinner {
+    position: absolute;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,.5);
+    opacity: 0;
+
+    .progress-circle {
+      margin-left: 50%;
+      margin-top: 50%;
+      left: -25px;
+      top: -25px;
+      position: absolute;
+      border-radius: 50%;
+      height: 50px;
+      width: 50px;
+      border: 2px white solid;
+    }
+
+    .play-btn {
+      $color-icon: #fff;
+      $w: 28px;
+      $h: $w*1.2;
+      $speed: 300ms;
+      $ease: cubic-bezier(0.680, -0.550, 0.265, 1.650);
+
+      cursor: pointer;
+      position: absolute;
+      width: $w;
+      height: $h;
+      top: 50%;
+      left: 50%;
+      margin-top: -($h/2) + 1px;
+      margin-left: -($w/2) + 5px;
+      @include appearance(none);
+      outline: 0;
+      border-style: solid;
+      border-width: ($h/2) 0 ($h/2) $w;
+      border-color: transparent transparent transparent $color-icon;
+      @include transform-origin(50% 50%);
+      @include backface-visibility(hidden);
+      @include transition(all $speed ease);
+      -moz-transform: scale(1.00005); /* hack Firefox smooth edge */
+
+      &.pause {
+        border-width: 0 ($h/3.5) 0 ($h/3.5);
+        border-color: transparent $color-icon transparent $color-icon;
+        @include transition(all $speed $ease);
+        margin-left: -16px;
+      }
+
+    }
+
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+  }
+
+  &.playing, > .cur-post {
+    .overlay {
+      opacity: 1 !important;
+    }
+  }
+}
+
+.cur-post {
+  .overlay {
+    opacity: 1 !important;
+  }
+}

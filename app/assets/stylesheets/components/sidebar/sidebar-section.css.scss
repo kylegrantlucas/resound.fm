@@ -1,0 +1,40 @@
+.sidebar {
+  // Disabling fixed until we can find a better solution for handling long sidebars
+  // position: fixed;
+  // width: 273px;
+}
+
+.sidebar-right {
+  margin-left: 20px;
+}
+
+@media (min-width: 1392px) {
+  .sidebar {
+    width: 310px;
+  }
+
+  .sidebar-right {
+    margin-left: 0;
+  }
+}
+
+.sidebar-section {
+  float: left;
+  color: $dark-grey;
+  width: 100%;
+  margin: 20px 0 0 0;
+  background-color: rgba(235, 230, 230, 0.75);
+  border-radius: 2px;
+
+  .sidebar-title {
+    display: block;
+    font-size: 1.2em;
+    font-weight: 300;
+    border-bottom: 1px solid $dark-grey;
+    padding: 12px 18px 10px 18px;
+  }
+
+  .sidebar-content {
+    padding: 12px;
+  }
+}

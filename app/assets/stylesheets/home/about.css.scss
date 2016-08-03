@@ -1,0 +1,83 @@
+@import "compass/css3";
+
+html, body {
+  height: 100%;
+}
+
+html {
+  background-color: #F15F5A;
+}
+
+body {
+  opacity: 0;
+  @include transition(opacity 0.5s);
+}
+
+.nav ul > li > a {
+  opacity: 0.85;
+}
+
+.wrap {
+  background-color: white;
+}
+
+.about {
+  background-color: white;
+
+  & section {
+    color: #222;
+    padding: 20px;
+  }
+
+  a {
+    color: #999;
+  }
+
+  .group-info {
+    background-color: #FEFEFE;
+
+    h2 {
+      padding-top: 36px;
+      padding-bottom: 22px;
+    }
+
+    .container.team-box {
+      position: relative;
+      text-align: center;
+      padding-left: 0;
+      padding-right: 0;
+
+      .team-member {
+        position: relative;
+        display: inline-block;
+        box-sizing: border-box;
+        text-align: center;
+        vertical-align: top;
+        min-width: 200px;
+        width: 24%;
+        margin-bottom: 30px;
+        padding: 18px;
+
+        &:last-child {
+          border-right: none;
+        }
+
+        > img {
+          width: 80%;
+          border-radius: 50%;
+          border: 2px solid #ccc;
+        }
+
+        h3 {
+          margin: 10px;
+          font-size: 0.6em;
+          font-weight: 600;
+        }
+
+        p.bio {
+          font-size: 0.45em;
+        }
+      }
+    }
+  }
+}

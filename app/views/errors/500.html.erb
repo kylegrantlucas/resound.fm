@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Oops :(</title> 
+  <%= stylesheet_link_tag "500", media: "all" %> 
+</head>
+
+<body>
+  <h1>Shoot.</h1>
+  <h2>Something went wrong. Thanks for finding this bug!</h2>
+  <div class="server-room">
+    <canvas id="smoke1"></canvas>
+    <div class="server">
+      <div class="rack">
+        <div class="light"></div>
+        <div class="slot"></div>
+      </div>
+      <div class="rack">
+        <div class="light"></div>
+        <div class="slot"></div>
+      </div>
+      <div class="rack">
+        <div class="light"></div>
+        <div class="slot"></div>
+      </div>
+      <div class="rack">
+        <div class="light"></div>
+        <div class="slot"></div>
+      </div>
+      <div class="rack">
+        <div class="light"></div>
+        <div class="slot"></div>
+      </div>
+      <div class="rack">
+        <div class="light"></div>
+        <div class="slot"></div>
+      </div>
+    </div>
+  </div>
+
+  <h4 class="wake-up-kyle">(We're waking up Kyle right now. It should be fixed soon!)</h4>
+
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      window.setTimeout(function() {
+        // Thank you Robert Lemon!!!
+        // Source: http://codepen.io/rlemon/pen/JdxvL
+        function Particle(x, y, vx, vy, size, img) {
+            this.x = x;
+            this.y = y;
+            this.sx = x;
+            this.sy = y;
+            this.vx = vx;
+            this.vy = vy;
+            this.size = size;
+            this.img = img;
+            this.reset.call(this);
+        }
+        Particle.prototype = {
+            constructor: Particle,
+            update: function () {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vx += windforce/10;
+                if( Math.abs(this.vx) > max_velocity ) {
+                  this.vx = this.vx > 0 ? max_velocity : -max_velocity;
+                }
+                var now = Date.now();
+                if (now - this.created > this.life) {
+                    this.reset();
+                }
+            },
+            reset: function () {
+                this.x = this.sx;
+                this.y = this.sy;
+                this.created = Date.now();
+                this.life = Math.random() * 1000 + 1000;
+            },
+            render: function () {
+                var now = Date.now(),
+                    mod = ((now - this.created) / this.life),
+                    alpha = 1 - mod;
+
+                if (alpha < 0) alpha = 0;
+
+                context.globalAlpha = alpha;
+                context.drawImage(this.img, this.x - this.size / 2, this.y - this.size / 2, this.size, this.size);
+            }
+        };
+        var canvas, context, height, width, particles, limit, min_size, max_size, img, windforce, max_velocity;
+        setTimeout(codepeninit, 10);
+
+        function codepeninit() {
+            canvas = document.getElementById('smoke1');
+            context = canvas.getContext('2d');
+            height = canvas.height = 200;
+            width = canvas.width = 200;
+            particles = [];
+            limit = 512;
+            min_size = 12;
+            max_size = 32;
+            windforce = 0;
+            max_velocity = 0.5;
+            img = new Image();
+            img.src = "<%= image_path('smoke.png')%>";
+            img.onload = init;
+        }
+
+        function init() {
+            for (var i = 0; i < limit; i++) {
+                var x = width / 2,
+                    y = height / 2,
+                    j = Math.random() * 2 - 1,
+                    vy = Math.random() * -2,
+                    vx = j,
+                    size = Math.random() * (max_size - min_size) + min_size,
+                    p = new Particle(x + j, y + j, vx, vy, size, img);
+                particles.push(p);
+            }
+            update();
+            render();
+        }
+
+        function update() {
+            for (var i = 0, l = particles.length; i < l; i++) {
+                particles[i].update();
+            }
+            setTimeout(update, 1000 / 30);
+        }
+
+        function render() {
+            context.clearRect(0, 0, width, height);
+            for (var i = 0, l = particles.length; i < l; i++) {
+                particles[i].render();
+            }
+            requestAnimationFrame(render);
+        }
+
+        (function wind() {
+            windforce = Math.random() * 1 - 0.5
+            setTimeout(wind, Math.random() * 100 * 10);
+        }());
+      }, 2500);
+    });
+  </script>
+</body>
+</html>

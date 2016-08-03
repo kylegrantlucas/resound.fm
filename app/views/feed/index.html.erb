@@ -1,0 +1,15 @@
+<div id="app"></div>
+
+<script>
+  window.bootstrap = {};
+  window.bootstrap.trendingTags = <%= render(:file => 'api/tags/trending.json.rabl', object: @tags=Tag.trending_tags).html_safe %>;
+  window.bootstrap.curUser = <%= render(file: 'api/users/current_user', object: @user=current_user).html_safe %>;
+  window.bootstrap.followingRecs = <%= render(file: 'api/users/following_recommendations', object: @users=following_recommendations).html_safe %>;
+  window.bootstrap.user = <%= @user_page ? render(file: 'api/users/show', object: @user=@user_page).html_safe : [] %>;
+  window.bootstrap.followers = <%= @followers ? render(file: 'api/followers/index', object: @followers).html_safe : [] %>;
+  window.bootstrap.followings = <%= @followings ? render(file: 'api/followers/followings', object: @followings).html_safe : [] %>;
+  window.bootstrap.posts = <%= render(file: 'api/posts/index', object: @posts).html_safe %>;
+//  window.bootstrap.pusherKey = '<%= ENV['PUSHER_KEY'] %>';
+  window.SOUNDCLOUD_ID = '<%= ENV['SOUNDCLOUD_ID'].html_safe %>';
+  window.API_KEY = '<%= current_user.auth_token.html_safe %>';
+</script>

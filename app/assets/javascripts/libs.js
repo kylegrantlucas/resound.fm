@@ -1,0 +1,15 @@
+//= require jquery
+//= require jquery_ujs
+//= require jquery-ui
+//= require jquery.knob
+//= require jquery.autosize
+//= require modernizr.custom.72715
+//= require moment.min
+//= require fluxxor
+//= require lodash
+//= require toolbox
+//= require spin
+//= require bootstrap
+//= require soundmanager2
+//= require offline.min
+//= require tooltip

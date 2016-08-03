@@ -1,0 +1,98 @@
+@import "compass/css3/user-interface";
+
+@mixin setColorOfFontBorderFill($fontColor, $borderColor, $fillColor) {
+  color: $fontColor;
+  border-color: $borderColor;
+  background-color: $fillColor;
+}
+
+@mixin buildButtonClasses($colorName, $color, $altColor) {
+  &.btn-#{$colorName} {
+  @include setColorOfFontBorderFill($color, $color, transparent);
+
+    &.btn-filled {
+      @include setColorOfFontBorderFill($altColor, $color, $color);
+    }
+  }
+
+  &.btn-hover-#{$colorName}:hover {
+    @include setColorOfFontBorderFill($color, $color, transparent);
+
+    &.btn-hover-filled {
+      @include setColorOfFontBorderFill($altColor, $color, $color);
+    }
+  }
+}
+
+.ghost-btn {
+  height: 30px;
+  line-height: 25px;
+  border-radius: 999em;
+  border: 2px solid;
+  padding: 0;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  cursor: pointer;
+  @include setColorOfFontBorderFill($light-grey, $light-grey, transparent);
+  @include user-select(none);
+  @include transition(all 0.35s ease);
+
+  & > div.btn-contents {
+    margin: 0 14px;
+  } 
+
+  i.fa {
+    margin-right: 8px;
+  }
+
+  &:hover {
+    @include setColorOfFontBorderFill($light-grey, $light-grey, transparent);
+    text-decoration: none;
+  }
+
+  &.btn-full-width {
+    width: 100%;
+  }
+
+  // Disabled button
+  &.btn-disabled {
+    opacity: 0.8;
+    cursor: default;
+    @include setColorOfFontBorderFill($light-grey, $light-grey, transparent);
+
+    // negate possible hover effects
+    &:hover {
+      @include setColorOfFontBorderFill($light-grey, $light-grey, transparent);
+    }
+  }
+
+  &.btn-filled.btn-disabled {
+    opacity: 0.8;
+    cursor: default;
+    @include setColorOfFontBorderFill(white, transparent, $light-grey);
+
+    // negate possible hover effects
+    &:hover {
+      @include setColorOfFontBorderFill(white, transparent, $light-grey);
+    }
+  }
+
+// White
+@include buildButtonClasses('white', white, $dark-grey);
+
+// Grey
+@include buildButtonClasses('grey', $light-grey, white);
+
+// Grey
+@include buildButtonClasses('dark-grey', $dark-grey, $light-grey);
+
+// Red
+@include buildButtonClasses('red', $red, white);
+
+// Green
+@include buildButtonClasses('green', $green, white);
+
+// Blue
+@include buildButtonClasses('blue', $blue, white);
+}

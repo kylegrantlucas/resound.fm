@@ -1,0 +1,175 @@
+@import "compass/utilities/general/clearfix";
+$new-post-form-nav-opacity: 0.75;
+$new-post-form-nav-hover-opacity: 1;
+
+.new-post-form {
+  height: 100%;
+
+	h1 {
+		color: white;
+    opacity: 0.8;
+		margin: 0 0 14px 0;
+		font-size: 24px;
+	}
+
+  .modal-back-btn {
+    position: absolute;
+    z-index: 2;
+    // Width/height top/left adjusted because pythagoras said it must be so
+    // width/height set in component
+    top: 27px;
+    left: 27px;
+    @include hoverOpacity($new-post-form-nav-opacity, $new-post-form-nav-hover-opacity);
+  }
+
+  .modal-close-btn {
+    position: absolute;
+    z-index: 2;
+    width: 50px;
+    height: 50px;
+    top: 20px;
+    right: 20px;
+    @include hoverOpacity($new-post-form-nav-opacity, $new-post-form-nav-hover-opacity);
+  }
+}
+
+.track-search-page {
+	color: white;
+  height: 100%;
+}
+
+.compose-post-page {
+	$album-art-size: 100px;
+
+  .track-info-row {
+    margin-bottom: 10px;
+  }
+
+  .track-info-container {
+    height: $album-art-size;
+  }
+
+  .big-card {
+    margin: 0 auto 25px auto;
+  }
+
+  // TODO: make this less hacky (ie. put in container, use component, etc)
+  .go-back-btn {
+    $leftOffset: -75px;
+    position: absolute;
+    width: 100px; // larger target area
+    left: $leftOffset;
+    top: -4px;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    font-size: 150px;
+    font-weight: 100;
+    line-height: 100px;
+    cursor: pointer;
+    @include transition(opacity 0.1s ease);
+    @include transition(left 0.1s ease);
+    @include hoverOpacity($new-post-form-nav-opacity, $new-post-form-nav-hover-opacity);
+
+    &:hover {
+      left: $leftOffset - 3px;
+    }
+  }
+
+	.track {
+
+		img {
+      width: $album-art-size;
+      height: $album-art-size;
+      float: left;
+      position: absolute;
+      display: inline-block;
+    }
+
+    .info {
+    	color: white;
+      width: 100%;
+      height: $track-result-height;
+      overflow: hidden;
+      padding: 4px 10px 4px ($album-art-size + 10px);
+      display: inline-block;
+
+      p {
+        margin: 0;
+      }
+
+      .title {
+        font-size: 20px;
+      }
+
+      .artist {
+        font-size: 16;
+        color: #CECECE;
+      } 
+    }
+	}
+
+  .post-btn {
+    height: 50px;
+
+    .btn-contents {
+      height: 50px;
+      line-height: 1.5em;
+      font-size: 1.5em;
+      padding-top: 6px;
+    }
+  }
+
+  .alt-videos-container {
+    margin: 40px 0 50px 0;
+
+    p {
+      width: 100%;
+      text-align: center;
+      color: white;
+      opacity: 0.8;
+    }
+  }
+
+  .alt-videos {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+
+    .alt-video {
+      width: 18%;
+      margin-right: 2.25%;
+      display: inline-block;
+      vertical-align: top;
+      border-radius: 2px;
+      background-color: white;
+      // border: 2px solid transparent;
+      cursor: pointer;
+      @include hoverOpacity(0.75, 1);
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.selected {
+        @include box-shadow(0 0 0 3px rgba(150, 150, 150, 0.8));
+      }
+
+      &:hover {
+        opacity: 1;
+        @include box-shadow(0 0 0 3px rgba(204, 204, 204, 0.8));
+      }
+
+      img {
+        width: 100%;
+      }
+
+      p {
+        @include use-font('Lucia Grande');
+        color: $dark-grey;
+        padding: 8px 10px;
+        margin: 0;
+      }
+    }
+  }
+}

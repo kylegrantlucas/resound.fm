@@ -1,0 +1,99 @@
+.introjs-tooltip {
+  $tooltip-color: #FF7359;
+
+  background-color: $tooltip-color !important;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 12px 20px rgba(0,0,0,0.4) !important;
+  border-radius: 6px;
+
+  .introjs-arrow {
+    &.top, &.top-middle, &.top-left, &.top-right {
+      border-bottom-color: $tooltip-color;
+    }
+    &.bottom, &.bottom-middle {
+      border-top-color: $tooltip-color;
+    }
+    &.left-middle {
+      border-right-color: $tooltip-color;
+    }
+    &.right-middle {
+      border-left-color: $tooltip-color;
+    }
+  }
+
+  .introjs-bullets {
+
+    ul {
+      margin: 14px auto 6px;
+    }
+
+    ul li a {
+      $size: 8px;
+      width: $size;
+      height: $size;
+      background-color: transparent;
+      border: 1px solid white;
+
+      &.active {
+        background-color: white;
+      }
+    }
+  }
+
+  .introjs-tooltipbuttons {
+
+    .introjs-button {
+      background-color: transparent;
+      border: 2px solid white;
+      background-image: none;
+      text-shadow: none;
+      text-decoration: none;
+      color: white;
+      font-weight: 800;
+      border-radius: 4px;
+
+      &:not(.introjs-disabled):hover {
+        background-color: rgba(255,255,255,0.25);
+      }
+
+      &.introjs-disabled {
+        border-color: rgba(255,255,255, 0.5);
+        color: rgba(255,255,255,0.5);
+      }
+
+      &.introjs-skipbutton {
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        opacity: 0.75;
+        border: 0;
+        padding: 0;
+        margin: 0;
+
+        &:hover {
+          background-color: transparent;
+          box-shadow: none;
+          opacity: 1;
+        }
+      }
+
+      &.introjs-prevbutton {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+      }
+
+      &.introjs-nextbutton {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 0;
+      }
+    }
+  }
+
+  span.hashtag {
+    background-color: rgba(0,0,0, 0.2);
+    padding: 2px 5px;
+    border-radius: 2px;
+
+  }
+}

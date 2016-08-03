@@ -1,0 +1,4 @@
+.track-source {
+    min-width: 60px;
+    @include transition(opacity 0.25s ease);
+}

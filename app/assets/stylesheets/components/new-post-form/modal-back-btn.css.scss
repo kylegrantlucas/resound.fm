@@ -1,0 +1,25 @@
+.modal-back-btn {
+  $button-size: 35px;
+
+  height: $button-size + 10px; // larger target area
+  color: white;
+  padding-left: 26px;
+  line-height: $button-size - 5px;
+  font-size: 24px;
+  cursor: pointer;
+
+  .back-arrow {
+    $line-width: 2px;
+    background-color: transparent;
+
+    &:before {
+      content: "";
+      @include posAbsolute(0, 0, 0, 0);
+      width: $button-size;
+      height: $button-size;
+      border-left: $line-width solid white;
+      border-bottom: $line-width solid white;
+      @include transform(rotate(45deg));
+    }
+  }
+}

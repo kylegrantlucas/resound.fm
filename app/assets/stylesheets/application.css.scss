@@ -1,0 +1,255 @@
+@import "compass";
+
+// Global vars
+$red          : #CA1212;
+$blue         : #4A90E2;
+$green        : #7ED321;
+$lightest-grey: #EEEEEE;
+$lighter-grey : #D8D8D8;
+$light-grey   : #CCCCCC;
+$med-grey     : #979797;
+$dark-grey    : #444444;
+$black        : #000000;
+
+$bg-color         : $dark-grey;
+$link-color       : $dark-grey;
+$like-color       : $red;
+$repost-color     : $blue;
+$dark-panel-color : rgba(28, 25, 25, 0.5);
+
+$card-width           : 650px;
+$navbar-height        : 50px;
+$footer-player-height : 64px;
+$album-art-size       : $footer-player-height + 6px;
+$seek-bar-height      : 5px;
+
+@import "mixins";
+
+// Hi Kyle.
+// I hid your profiler (just hover over where it should be).
+.profiler-results {
+  opacity: 0;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+// Hacks Bootstraps large breakpoint to be at 1392px instead of 1200px
+@import "bootstrapHacks";
+
+/* Default container widths for reference */
+// @media (min-width: 0) {
+//   .container{
+//     width: 750px;
+//   }
+// }
+
+// @media (min-width: 768px) {
+//   .container{
+//     width: 750px;
+//   }
+// }
+
+// @media (min-width: 992px) {
+//   .container{
+//     width: 970px;
+//   }
+// }
+
+@media (min-width: 1392px) {
+  // At large sizes where the cards are centered, let the nav match their column width
+  ul.center-nav {
+    width: $card-width;
+    margin: 0 auto;
+
+    & > li {
+      $num-menu-items: 5;
+      width: (100% / $num-menu-items);
+    }
+  }
+}
+
+// General css overrides
+body, html {
+  background-color: $bg-color;
+  font-family: 'Lato', 'Arial', sans-serif;
+  min-height: 100%;
+
+  .blurred-art {
+    @include posFixed(0, null, null, 0);
+    width: 100%;
+    height: 100%;
+  }
+}
+
+#app, .app, .app-wrapper{
+  height: 100%;
+  width: 100%;
+}
+
+.context-bar-container {
+  position: relative;
+  width: 100%;
+  z-index: 5;
+
+  &.tag-context {
+    // Compensate for the child's fixed position
+    height: 50px;
+  }
+}
+
+.bg-container {
+  height: 100%;
+  background-color: #fff;
+}
+
+.loading-wrapper {
+  min-height: 400px;
+}
+
+a, a:hover {
+  color: $link-color;
+}
+
+a:focus {
+  outline: none;
+}
+
+a.hashtag {
+  color: $red;
+}
+
+a.link {
+  text-decoration: none;
+  @include background-image(linear-gradient(top, rgba(0,0,0,0) 50%, rgba(0,0,0,0.6) 50%));
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  background-position: 0 14px;
+}
+
+@media only screen and (min-device-pixel-ratio:2),only screen and (min-resolution:2dppx),only screen and (-webkit-min-device-pixel-ratio:2) {
+  a.link {
+    @include background-image(linear-gradient(top, rgba(0,0,0,0) 75%, rgba(0,0,0,0.8) 75%));
+    background-repeat: repeat-x
+  }
+}
+
+.card-shadow {
+  @include box-shadow(0 1px 8px rgba(0, 0, 0, 0.3));
+}
+
+.tooltip {
+  width: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 11px;
+}
+
+.btn {
+  border-radius: 0;
+
+  &.big-red-btn {
+    position: absolute;
+    bottom: 14px;
+    right: 28px;
+    color: white;
+    background-color: red;
+    background-image: linear-gradient(
+      to top left,
+      red 25%, #f06d06
+    );
+    border: 0;
+    outline: none;
+    border-radius: 3px;
+
+    opacity: 0.85;
+    @include transition-property(opacity);
+    @include transition-duration(0.25s);
+    @include transition-timing-function(ease-out);
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.form-control {
+  border-radius: 0;
+  border: 1px solid #DCDCDC;
+  @include single-transition(border, 0.3s, ease-in-out);
+  outline: none;
+  padding: 6px 8px;
+}
+
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+  cursor: inherit;
+  background-color: #eeeeee;
+}
+
+.content {
+  padding-top: $navbar-height;
+  padding-bottom: $footer-player-height + 10px;
+
+  .content-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+  }
+}
+
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
+
+.truncate-with-ellipses {
+  // TODO: get Compass ellipses() method working
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-text-overflow: ellipses;
+  -o-text-overflow: ellipsis;
+}
+
+@import "registration";
+@import "onboarding";
+@import "components/big-card/*";
+@import "components/new-post-form/*";
+@import "components/sidebar/*";
+@import "components/context-bars/**/*";
+@import "components/navbar";
+@import "components/ghost-button";
+@import "components/like-btn";
+@import "components/footer-like-btn";
+@import "components/media-controls";
+@import "components/seek-bar";
+@import "components/footer-player";
+@import "components/track-search";
+@import "components/track-form";
+@import "components/comment-icons";
+@import "components/comments";
+@import "components/search-bar";
+@import "components/user-list";
+@import "components/follow-btn";
+@import "components/delete-btn";
+@import "components/small-delete-btn";
+@import "components/video-player";
+@import "components/notifications-menu";
+@import "components/notifications-list";
+@import "components/new-popover";
+@import "components/notifications-popover";
+@import "components/user-menu-popover";
+@import "components/taggable-textarea";
+@import "components/offline";
+@import "components/flash";
+@import "components/modal";
+@import "components/new-post-form";
+@import "components/list-menu";
+@import "components/hover-player";
+@import "components/feed";
+@import "components/test-module";
+@import "components/tooltip";
+@import "components/users-tooltip";
+@import "components/intro-js";
+@import "components/tagged-text";

@@ -1,0 +1,26 @@
+@import "compass/css3/user-interface";
+
+.comment-input {
+  $comment-user-icon-size: 35px;
+  $comment-user-icon-right-padding: 12px;
+  $comment-input-border-color: $lighter-grey;
+
+  width: 100%;
+  padding: 10px $card-padding;
+
+  img.comment-input-user-icon {
+    float: left;
+    @include circle-user-icon($comment-user-icon-size);
+    margin-right: $comment-user-icon-right-padding;
+  }
+
+  .taggable-textarea {
+    width: $card-width - 2*$card-padding - $comment-user-icon-size - $comment-user-icon-right-padding;
+    float: right;
+
+    textarea {
+      // Otherwise jquery autosize will start with the container height regardless of padding
+      height: 35px;
+    }
+  }
+} 

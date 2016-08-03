@@ -1,0 +1,94 @@
+@import "compass/utilities/general/clearfix";
+
+.comments-box {
+  // TODO: HERE BE DRAGONS (WALL HAX, plz fix)
+  position: relative;
+  top: -1px;
+
+  width: 100%;
+  padding: 10px 0 2px 0;
+  @include box-shadow(inset 0 0 2px rgba(0, 0, 0, 0.2), inset 0 -1px 2px rgba(0, 0, 0, 0.2));
+
+  .more-comments {
+    padding-bottom: 8px;
+    text-align: center;
+
+    a.more-comments-btn {
+      display: block;
+      margin: 0 auto;
+      color: $med-grey;
+      font-weight: 600;
+    }
+  }
+
+  $comment-user-icon-size: 35px;
+  $comment-user-icon-right-padding: 12px;
+  // Needs to be a set width to float properly
+  $comment-body-width: $card-width - $comment-user-icon-size - $comment-user-icon-right-padding - (2 * $card-padding);
+
+  .comments {
+    margin: 0;
+    padding: 0 $card-padding;
+    list-style: none;
+
+    .comment {
+      position: relative;
+      padding-bottom: 6px;
+      border-bottom: 1px solid $lighter-grey;
+      margin-bottom: 8px;
+      @include clearfix();
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .user-icon {
+        float: left;
+        width: $comment-user-icon-size + $comment-user-icon-right-padding;
+        height: $comment-user-icon-size;
+
+        img {
+          @include circle-user-icon($comment-user-icon-size);
+        }
+      }
+
+      .comment-body {
+        float: left;
+        width: $comment-body-width;
+        padding-right: 70px;
+      
+        .user-full-name {
+          font-size: 1.1em;
+          line-height: 1.3em;
+          font-weight: 600;
+        }
+
+        .comment-time {
+          position: absolute;
+          top: 0;
+          right: 0;
+          font-weight: 300;
+          color: $light-grey;
+        }
+
+        .comment-text p {
+          margin: 0;
+          font-size: 1.1em;
+          line-height: 1.3em;
+        }
+      }
+
+      &:hover {
+        .comment-delete-btn {
+          visibility: visible;
+        }
+      }
+    }
+
+    .comment-delete-btn {
+      visibility: hidden;
+      vertical-align: top;
+      margin-left: 2px;
+    }
+  }
+}

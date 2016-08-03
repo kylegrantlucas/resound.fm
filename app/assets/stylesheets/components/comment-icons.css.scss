@@ -1,0 +1,19 @@
+.comment-icons {
+  display: inline-block;
+  margin: 0;
+  margin-right: 6px;
+
+  li {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+
+    img {
+      display: block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
+  }
+}

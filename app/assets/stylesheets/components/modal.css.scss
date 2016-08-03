@@ -1,0 +1,51 @@
+$modal-padding: 50px;
+
+.modal-bg {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 9999;
+    visibility: hidden;
+    opacity: 0;
+    overflow: auto;
+}
+
+.modal-bg.modal-show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-app {
+  @include filter(blur(5px));
+}
+
+.modal-app-wrapper {
+  overflow: hidden;
+}
+
+.modal-inner{
+  opacity: 0;
+  height: 100%;
+  padding: $modal-padding;
+}
+
+.modal-close-btn {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  top: 25px;
+  right: 25px;
+  z-index: 1;
+}
+.modal-show .modal-inner {
+  opacity: 1;
+}
+
+.modal-bg,
+.modal-inner,
+.modal-app {
+  @include transition(all 0.25s ease);
+}

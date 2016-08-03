@@ -1,0 +1,203 @@
+
+<style>
+  body {
+    background-color: white;
+    padding: 10% 20%;
+  }
+
+  .button-test-container {
+    margin: 10px 0;
+    display: inline-block;
+  }
+
+  .button-test-container:not(:last-child) {
+    margin-right: 25px;
+  }
+
+</style>
+
+<h4>Simple Button Tests</h4>
+<div>
+  <div class="button-test-container" id="button-1a"></div>
+  <div class="button-test-container" id="button-1b"></div>
+  <div class="button-test-container" id="button-1c"></div>
+  <div class="button-test-container" id="button-1d"></div>
+  <div class="button-test-container" id="button-1e"></div>
+  <div class="button-test-container" id="button-1f"></div>
+  <div class="button-test-container" id="button-1g"></div>
+  <div class="button-test-container" id="button-1h"></div>
+</div>
+
+<h4>Link Testing</h4>
+<div>
+  <div class="button-test-container" id="button-2a"></div>
+  <div class="button-test-container" id="button-2b"></div>
+  <div class="button-test-container" id="button-2c"></div>
+</div>
+
+<h4>Complex Button Tests</h4>
+<div>
+  <div class="button-test-container" id="button-3a"></div>
+  <div class="button-test-container" id="button-3b"></div>
+  <div class="button-test-container" id="button-3c"></div>
+  <div class="button-test-container" id="button-3d"></div>
+</div>
+<% content_for :javascripts do %>
+  <script>
+    var SimpleButton = require('app/components/SimpleButton');
+
+    React.renderComponent(
+      new SimpleButton({color: 'red', icon: 'plus'}, "child text"),
+      document.getElementById('button-1a')
+    );
+
+    React.renderComponent(
+      new SimpleButton({color:'red', filled:true, text:"filled true"}),
+      document.getElementById('button-1b')
+    );
+
+    React.renderComponent(
+      new SimpleButton({color:'red', filled:false, text:"filled false"}),
+      document.getElementById('button-1c')
+    );
+
+    React.renderComponent(
+      new SimpleButton({color:'red', filled:false, text:"hover change", hoverText:"it's magic!"}),
+      document.getElementById('button-1d')
+    );
+
+    React.renderComponent(
+      new SimpleButton({color:'blue', filled:false, icon:"globe", text:"Global"}, "Borked"),
+      document.getElementById('button-1e')
+    );
+
+    React.renderComponent(
+      new SimpleButton({}, "No Props"),
+      document.getElementById('button-1f')
+    );
+
+    var badFun = function () {
+      alert("You shouldn't be seeing this!")
+    };
+
+    React.renderComponent(
+      new SimpleButton({disabled:true, color:'red', filled:false, text:"disabled", hoverText:"bad things!", onClick:badFun}),
+      document.getElementById('button-1g')
+    );
+
+    React.renderComponent(
+      new SimpleButton({disabled:true, color:'red', filled:true, text:"disabled", hoverText:"bad things!", onClick:badFun}),
+      document.getElementById('button-1h')
+    );
+
+
+
+    // Link testing
+
+    var alertFunc = function () {
+      alert("gotcha!");
+    }
+
+    React.renderComponent(
+      new SimpleButton({color: 'green', href: "#test"}, "href test"),
+      document.getElementById('button-2a')
+    );
+
+    React.renderComponent(
+      new SimpleButton({color: 'green', onClick:alertFunc}, "onClick test"),
+      document.getElementById('button-2b')
+    );
+
+    React.renderComponent(
+      new SimpleButton({color: 'green', href:"#test", onClick:alertFunc}, "href + onClick"),
+      document.getElementById('button-2c')
+    );
+
+    var GhostButton = require('app/components/GhostButton');
+
+    React.renderComponent(
+      new GhostButton({stateProps: {
+        default: {
+          color: 'red',
+          filled: true,
+          text: "no hover state defined",
+          icon: 'plus',
+          onClick: '#'
+        }
+      },
+      transparent: false,
+      fullWidth: false
+    }),
+      document.getElementById('button-3a')
+    );
+
+    React.renderComponent(
+      new GhostButton({stateProps: {
+        default: {
+          color: 'red',
+          filled: false,
+          text: "normal red",
+          icon: 'plus',
+          onClick: '#'
+        },
+        hover: {
+          color: 'red',
+          filled: true,
+          text: "hover red",
+          icon: 'plus',
+          onClick: '#'
+        }
+      },
+      transparent: false,
+      fullWidth: false
+    }),
+      document.getElementById('button-3b')
+    );
+
+    React.renderComponent(
+      new GhostButton({stateProps: {
+        default: {
+          color: 'green',
+          filled: true,
+          text: "green",
+          icon: 'plus',
+          onClick: '#'
+        },
+        hover: {
+          color: 'red',
+          filled: false,
+          text: "red",
+          icon: 'plus',
+          onClick: '#'
+        }
+      },
+      transparent: false,
+      fullWidth: false
+    }),
+      document.getElementById('button-3c')
+    );
+
+    React.renderComponent(
+      new GhostButton({stateProps: {
+        default: {
+          color: 'grey',
+          filled: false,
+          text: "global",
+          icon: 'globe',
+          onClick: '#'
+        },
+        hover: {
+          color: 'red',
+          filled: true,
+          text: "global",
+          icon: 'globe',
+          onClick: '#'
+        }
+      },
+      transparent: false,
+      fullWidth: false
+    }),
+      document.getElementById('button-3d')
+    );
+  </script>
+<% end %>

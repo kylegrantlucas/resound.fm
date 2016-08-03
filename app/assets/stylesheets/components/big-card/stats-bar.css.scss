@@ -1,0 +1,119 @@
+@import "compass/css3/user-interface";
+
+.stats-bar {
+  $stats-bar-height: 40px;
+  $setting-dots-chunk-width: 50px;
+  $stat-chunk-spacing: 25px;
+  // Colors
+  $stats-color: $med-grey;
+  $stats-hover-color: $black;
+  $stats-border-color: $lighter-grey;
+
+  height: $stats-bar-height;
+  border-top: 1px solid $stats-border-color;
+  border-bottom: 1px solid $stats-border-color;
+  padding: 0 0 0 $card-padding;
+  @include user-select(none);
+
+  .stats {
+    float: left;
+    color: $stats-color;
+  }
+
+  .stat-chunk {
+    height: $stats-bar-height;
+    position: relative;
+    float: left;
+    margin-right: $stat-chunk-spacing;
+    // line-height: $stats-bar-height;
+    @include single-transition(all, 0.3s, ease-in-out);
+
+    // This allows the tooltips to position themselves properly
+    .stat-chunk-content {
+      $height: 17px;
+      height: $height;
+      margin: (($stats-bar-height - $height)/2 - 1px) 0 (($stats-bar-height - $height)/2 + 1px) 0;
+    }
+
+      &:hover {
+        cursor: default;
+        text-decoration: none;
+      }
+
+      i {
+        position: relative;
+        top: 1px;
+        margin-right: 8px;
+        font-size: 1.2em;
+
+        &.fa-heart {
+          font-size: 1.1em;
+        }
+      }
+
+      .stat-number {
+        font-weight: 600;
+      }
+    }
+
+  // Disable heart turning black on hover
+  .stat-chunk-likes i, .stat-chunk-likes a {
+    color: $stats-color;
+  }
+
+  .like-stats-names {
+    color: $stats-color;
+
+    .like-stats-name, .like-stats-others {
+      color: $stats-color;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        color: $stats-hover-color;
+      }
+    }
+
+    // &:hover {
+    //   cursor: pointer;
+    // }
+  }
+
+  .settings-popover-set {
+    float: right;
+
+    .new-popover{
+      right: -23px;
+      top: 31px;
+      width: 150px;
+    }
+  }
+
+  .setting-dots-chunk {
+    float: right;
+    width: $setting-dots-chunk-width;
+    height: 100%;
+    box-sizing: border-box;
+    font-size: 2.5em;
+    color: #D8D8D8;
+    text-align: center;
+    line-height: $stats-bar-height - 1px;
+    border-left: 1px solid #D8D8D8;
+    @include single-transition(all, 0.2s, ease-in-out);
+
+    &:hover {
+      background-color: #D8D8D8;
+      color: white;
+      cursor: pointer;
+    }
+  }
+
+  li.menu-item-delete > a:hover {
+    i {
+      color: $red;
+    }
+    span {
+      color: $red;
+    }
+  }
+}

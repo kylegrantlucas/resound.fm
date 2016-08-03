@@ -1,0 +1,27 @@
+
+.track-info {
+  position: relative;
+  overflow: hidden;
+  color: white;
+
+  .title {
+    font-size: 2em;
+    max-height: 2em;
+    overflow: hidden;
+    // Allows for descenders to hang off the second line without getting cut off.
+    box-sizing: content-box;
+    padding-bottom: 0.25em;
+
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: 0.0625em;
+    @include text-shadow(0 0 4px rgba(33,33,33, 0.5));
+  }
+
+  .artist {
+    margin: 2px 0 0 0;
+    letter-spacing: 0.03em;
+    font-weight: 300;
+    @include text-shadow(0 0 3px rgba(33,33,33, 0.5));
+  }
+}

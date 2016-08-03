@@ -1,0 +1,16 @@
+<div id="app"></div>
+
+<script>
+    window.bootstrap = {};
+    window.bootstrap.curUser = <%= render(file: 'api/users/current_user', object: @user=current_user, formats: :json).html_safe %>;
+    window.bootstrap.followers = <%= render(file: 'api/users/following_recommendations', object: @users=following_recommendations, formats: :json).html_safe %>;
+    window.API_KEY = '<%= current_user.auth_token.html_safe %>';
+</script>
+
+<style>
+  .registration {
+    width: 100%;
+    max-width: 800px;
+    margin-left: -450px;
+  }
+</style>

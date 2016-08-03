@@ -1,0 +1,52 @@
+<div class="wrap">
+  <div class="about content">
+    <div class="header">
+      <div class="hero-image"></div>
+      <div class="container hero-box">
+        <div class="hero-header v-middle">
+          <h1>We are resound.fm</h1>
+        </div>
+      </div>
+      <%= render partial: "nav" %>
+    </div>
+    <div class="group-info">
+      <h2 class="center-align">The Team</h2>
+      <div class="container team-box">
+        <div class="team-member">
+          <img alt="Matt Bleifer's face" title="Hi! I'm Matt Bleifer" src="<%= image_url('landing/headshots/Matt.jpg') %>"/>
+          <h3>Matt Bleifer</h3>
+          <p class="bio">Matt is a fourth year Computer Science student at Cal Poly with a strong passion for technology and entrepreneurship. He has a competitive drive for everything from sports, to business, and most importantly team foosball games.</p>
+        </div><!--
+     --><div class="team-member">
+          <img alt="Robert Long's face" title="Yo! I'm Robert Long" src="<%= image_url('landing/headshots/Robert.png') %>"/>
+          <h3>Robert Long</h3>
+          <p class="bio">Robert is another Cal Poly Computer Science student. He glues the frontend to the backend. He has always had a passion for discovering and researching music. Whether it's classic rock, indie, experimental hiphop, or witch house, Robert's on it.</p>
+        </div><!--
+     --><div class="team-member">
+          <img alt="Ryan McLeod's face" title="Hey there! I'm Ryan McLeod" src="<%= image_url('landing/headshots/Ryan.png') %>"/>                
+          <h3>Ryan McLeod</h3>
+          <p class="bio">Ryan's a recent grad of Cal Poly with a strong background in both design and front-end engineering from both Apple and Airbnb. He was kicked out of preschool for defiance which is probably related to his perfectionistic problem with pixels.</p>
+        </div><!--
+     --><div class="team-member">
+          <img alt="Kyle Lucas's face" title="Wait what? I'm Kyle Lucas" src="<%= image_url('landing/headshots/Kyle.jpg') %>"/>
+          <h3>Kyle Lucas</h3>
+          <p class="bio">Kyle is a fourth year computer science student at Cal Poly Pomona. With a strong background in backend engineering and experience at several startups he found a true passion in data and architecture. His other interests include long walks on the beach and irritating Robert.</p>
+        </div>
+      </div>
+    </div>
+    <h2 class="center-align">Contact Us</h2>
+    <div class="container">
+      <section class="center-align">
+        <a href="mailto:team@resound.fm" target="_blank">team@resound.fm</a>
+      </section>
+      <section class="center-align">
+        <h3>Address:</h3>
+        <p>955 Morro Street</p>
+        <p>San Luis Obispo, CA 93401</p>
+      </section>
+    </div>
+    <br/>
+  </div>
+</div>
+<%= render partial: "footer" %>
+

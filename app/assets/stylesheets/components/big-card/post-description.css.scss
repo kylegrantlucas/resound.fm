@@ -1,0 +1,58 @@
+.post-description {
+
+  min-height: $user-icon-size + $card-padding;
+  padding: $card-padding $card-padding 0 $card-padding;
+  margin: 0; // because conflicts with old card
+
+  .user-info {
+    height: $user-icon-size;
+
+    .user-icon {
+      $user-icon-padding: $card-padding;
+      width: $user-icon-size + $user-icon-padding;
+      min-height: $user-icon-size;
+      float: left;
+
+      img {
+        @include circle-user-icon($user-icon-size);
+      }
+    }
+  }
+
+  .name-and-time {
+    float: left;
+
+    .full-name {
+      float: left;
+      font-size: 1.4em;
+      margin: 0;
+    }
+
+    .time {
+      display: block;
+      font-size: .9em;
+      color: #AAA;
+      font-weight: 300;
+    }
+
+    .follow-btn {
+      margin-left: 14px;
+    }
+  }
+
+  .action-buttons {
+    float: right;
+
+    a {
+      min-width: 94px;
+
+      &:not(:last-of-type) {
+        margin-right: 12px;
+      }
+    }
+  }
+
+  .description {
+    padding-left: $user-icon-size + $card-padding;
+  }
+}

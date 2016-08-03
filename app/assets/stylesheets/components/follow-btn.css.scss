@@ -1,0 +1,27 @@
+.follow-btn {
+
+  &.not-following-state {
+    color: white;
+    background-color: $green;
+    border-color: $green;
+
+    &:hover {
+      color: $green;
+      border-color: $green;
+      background-color: transparent;
+    }
+  }
+
+  &.following-state {
+    color: $green;
+    border-color: $green;
+    background-color: transparent;
+
+    &:hover {
+      color: white;
+      background-color: $green;
+      border-color: $green;
+    }
+  }
+
+}

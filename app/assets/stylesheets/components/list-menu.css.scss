@@ -1,0 +1,24 @@
+ul.list-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+
+    i {
+      padding-right: 10px;
+    }
+
+    a {
+      padding: 6px;
+      padding-left: 12px;
+      width: 100%;
+      display: block;
+      text-decoration: none;
+
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+  }
+}

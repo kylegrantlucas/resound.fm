@@ -1,0 +1,49 @@
+
+<style>
+  body {
+    background-color: #DDD;
+    padding: 10% 20%;
+  }
+
+  .button-test-container {
+    margin: 10px 0;
+    display: inline-block;
+  }
+
+  .button-test-container:not(:last-child) {
+    margin-right: 25px;
+  }
+
+</style>
+
+<h4>User List Tests</h4>
+<div id="testbed">
+  Loading your stupid thing now&hellip; Please shut up and be patient.
+</div>
+
+<% content_for :javascripts do %>
+  <script>
+    var UserList = require('app/components/UserList');
+    var Testbed = require('app/components/Tests/Testbed');
+    // var CurUserStore = require('app/stores/CurUserStore');
+    var UsersStore = require('app/stores/UsersStore');
+    var FollowersStore = require('app/stores/FollowersStore');
+
+    var stores = {
+      Users: new UsersStore(),
+      // CurUser: new CurUserStore(),
+      Followers: new FollowersStore()
+    };
+
+    var userList = new UserList({
+      "followAllButton": true,
+      "userLinksDisabled": true
+    });
+
+    React.renderComponent(
+      Testbed(userList, stores, ['Followers']),
+      document.getElementById('testbed')
+    );
+
+  </script>
+<% end %>

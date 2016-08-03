@@ -1,0 +1,21 @@
+button.delete-btn {
+  $button-size: 28px;
+
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: $button-size;
+  height: $button-size;
+  padding: 0;
+  border: 0;
+  color: #DDD;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-block;
+  text-align: center;
+
+  &:hover {
+    background-color: #EEE;
+    color: black;
+  }
+}

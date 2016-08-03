@@ -1,0 +1,8 @@
+.test-module {
+  position: fixed;
+  top: 50px;
+  right: 0px;
+  background-color: white;
+  border-bottom-left-radius: 4px;
+  @include hoverOpacity(0.9, 1); 
+}

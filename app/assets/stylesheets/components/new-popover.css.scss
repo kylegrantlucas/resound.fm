@@ -1,0 +1,89 @@
+.popover-wrapper {
+  position: relative;
+}
+
+.new-popover {
+  position: absolute;
+  z-index: 10;
+  width: 300px;
+  background-color: #fff;
+  border: 1px #ccc solid;
+  margin-top: 11px;
+  text-align: left;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+
+  .arrow-box {
+    position: relative;
+    padding: 8px;
+
+    &:after, &:before {
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+
+    &:after {
+      right: 36px;
+      border-color: rgba(0, 0, 0, 0);
+      border-width: 10px;
+      margin-left: -10px;
+    }
+
+    &:before {
+      right: 35px;
+      border-color: rgba(0, 0, 0, 0);
+      border-width: 11px;
+      margin-left: -11px;
+    }
+  }
+
+  &.top {
+    .arrow-box {
+
+      &:after, &:before {
+        bottom: 100%;
+      }
+
+      &:after {
+        border-bottom-color: #fff;
+      }
+      &:before {
+        border-bottom-color: #ccc;
+      }
+    }
+  }
+
+  &.left {
+    .arrow-box {
+
+      &:after {
+        left: 35px;
+        right: initial;
+      }
+      &:before {
+        left: 36px;
+        right: initial;
+      }
+    }
+  }
+
+  &.bottom {
+    .arrow-box {
+
+      &:after, &:before {
+        top: 100%;
+      }
+
+      &:after {
+        border-top-color: #fff;
+      }
+      &:before {
+        border-top-color: #ccc;
+      }
+    }
+  }
+
+}

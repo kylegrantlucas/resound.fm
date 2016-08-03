@@ -1,0 +1,16 @@
+  .user-account {
+    img {
+      border: 2px solid #FFFFFF;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      @include box-shadow(1px 1px rgba(0,0,0,0.2));
+    }
+  }
+
+  .nav-user-menu-popover {
+    .new-popover {
+      width: 200px;
+      right: -31px;
+    }    
+  }

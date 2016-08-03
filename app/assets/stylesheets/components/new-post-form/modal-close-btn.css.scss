@@ -1,0 +1,77 @@
+/*
+  Twas July the third when our two heros Ryan McLeod and Robert Long
+  embarked on their journey to create the "dopest" of all UI elements,
+  the Modal Close Button. Robert proposed they use a simple font awesome
+  icon but, Ryan gave his groan of disapproval. Instead the icon was to 
+  be built with the most cutting edge CSS technology.
+
+  Below is the finished piece of art. A component so powerful, so complex
+  that only two people in the world can truly appreciate and understand it's
+  existance.
+
+  Disclaimer: Untested on everything except Chrome 35 on MacBook Pro w/ Retina
+  Will most likely break in many browsers. But hey, it's fucking awesome.
+  */
+
+.modal-close-btn {
+  $line-width: 2px;
+  background-color: transparent;
+  cursor: pointer;
+
+  &.closing {
+    -webkit-animation: spin-out 0.2s 1 cubic-bezier(.31,-0.62,.7,1.53);
+    /* webkit fallback because: https://bugs.webkit.org/show_bug.cgi?id=45761 */
+    -webkit-transition-timing-function: cubic-bezier(.31,0,.7,1); 
+  }
+  
+  @mixin x-line($degree) {
+    content: "";
+    position: absolute;
+    left: 50%;
+    z-index: 2;
+    width: $line-width;
+    height: 100%;
+    background-color: white;
+    @include transform(rotate($degree));
+  }
+  
+  &:before {
+    @include x-line(45deg);
+  }
+
+  &:after {
+    @include x-line(135deg);
+  }
+}
+
+@-webkit-keyframes spin-out {
+  0%  {-webkit-transform: rotate(0deg);}
+  100% {
+    -webkit-transform: rotate(90deg) scale(0.5);
+    opacity: 0;
+  }   
+}
+
+@-moz-keyframes spin-out {
+  0%  {-moz-transform: rotate(0deg);}
+  100% {
+    -moz-transform: rotate(90deg) scale(0.5);
+    opacity: 0;
+  }   
+}
+
+@-ms-keyframes spin-out {
+  0%  {-ms-transform: rotate(0deg);}
+  100% {
+    -ms-transform: rotate(90deg) scale(0.5);
+    opacity: 0;
+  }   
+}
+
+@keyframes spin-out {
+  0%  {transform: rotate(0deg);}
+  100% {
+    transform: rotate(90deg) scale(0.5);
+    opacity: 0;
+  }   
+}

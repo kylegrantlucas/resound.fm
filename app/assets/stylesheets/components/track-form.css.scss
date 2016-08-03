@@ -1,0 +1,49 @@
+$avatar-size: 34px;
+$search-bar-height: 50px;
+$search-bar-avatar-size: $search-bar-height;
+$track-form-height: 200px;
+
+.track-form {
+  margin-top: 20px;
+  background-color: #fff;
+  box-shadow: 0 1px 8px rgba(0,0,0,.3);
+
+  .user-icon {
+    width: $avatar-size;
+    height: $avatar-size;
+  }
+
+  .search-user-icon {
+    border: 1px #DCDCDC solid;
+    border-right: 0;
+    float: left;
+    width: $search-bar-avatar-size;
+    height: $search-bar-avatar-size;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .form-container {
+    position: relative;
+    height: $track-form-height;
+    margin: 20px auto 0 auto;
+
+    button.cancel-posting-btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      border: 0;
+      color: #aaa;
+
+      &:hover {
+        color: black;
+      }
+    }
+  }
+
+  .yt-player {
+    position: absolute;
+  }
+}

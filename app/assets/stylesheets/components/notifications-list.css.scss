@@ -1,0 +1,58 @@
+.notifications-list {
+  list-style: none;
+  padding: 0;
+
+  .no-notifications {
+    border-top: 1px $lightest-grey solid;
+    padding: 10px;
+    text-align: center;
+  }
+
+  li {
+    border-top: 1px $lightest-grey solid;
+
+    &.see-more {
+      padding-top: 10px;
+      text-align: center;
+    }
+
+    a {
+      min-height: 32px;
+      width: 100%;
+      padding: 8px;
+      display: block;
+
+      &:hover {
+        background-color: $lightest-grey;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+
+    img {
+      @include circle-user-icon(32px);
+      float: left;
+    }
+
+    p {
+      font-size: 12px;
+      line-height: initial;
+      margin: 0 0 0 42px;
+    }
+
+    .time {
+      margin-top: 2px;
+      font-size: 12px;
+      text-align: right;
+      color: $med-grey;
+    }
+  }
+}
+
+.content {
+
+  .notifications-list {
+    background-color: #fff;
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,108 @@
+.seek-bar-container {
+  $head-radius: 6px;
+  $extra-target-area: $head-radius + 2px;
+  $head-color: #444;
+  z-index: 1;
+  cursor: pointer;
+
+  // Remove bootstrap's column padding
+  padding: 0;
+
+  // Show head on hover stuff
+  height: $seek-bar-height + (2 * $extra-target-area);
+  top: -$extra-target-area;
+  margin-bottom: -2 * $extra-target-area;
+
+  &:hover {
+    .seek-bar > .progress-bar > .head {
+      opacity: 1;
+      @include single-transition(opacity, 0.1s, ease-out);
+    }
+  }
+
+  .seek-bar {
+    height: $seek-bar-height;
+    position: absolute;
+    bottom: $extra-target-area;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #aaa;
+
+    .progress-bar {
+      width: 0;
+      height: $seek-bar-height;
+      box-sizing: border-box;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #ea4a3f;
+      border-top: 1px solid #ed665c;
+      overflow: visible;
+      @include single-transition(width, 0.1s, ease);
+
+      .head {
+        position: absolute;
+        opacity: 0;
+        top: -$head-radius + 1px;
+        right: -$head-radius - 1px;
+        height: 2 * $head-radius;
+        width: 2 * $head-radius;
+        border-radius: 50%;
+        background-color: $head-color;
+        border: 2px solid lighten($head-color, 10%);
+      }
+    }
+
+    .progress-tooltip {
+      position: absolute;
+      display: block;
+      left: 0;
+      top: -25px;
+      height: 20px;
+      background-color: rgba(31,31,31,0.8);
+      overflow: visible;
+      padding: 0 5px;
+
+      &:after {
+        top: 100%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        left: 7px;
+        border-color: rgba(0, 0, 0, 0);
+        border-top-color: rgba(31,31,31,0.8);
+        border-width: 5px;
+        margin-left: -5px;
+      }
+    }
+
+    .track-pos, .track-duration {
+      font-size: 10px;
+      position: absolute;
+      top: -7px;
+      margin: 1px 0 0 0;
+      z-index: 2;
+      opacity: 0;
+      @include transition(opacity .2s);
+    }
+
+    .track-pos {
+      background-color: $red;
+      color: white;
+      left: 0;
+      padding: 2px 3px 2px 4px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .track-duration {
+      background-color: white;
+      color: black;
+      right: 0;
+      padding: 2px 4px 2px 3px;
+      border-radius: 4px 0 0 4px;
+    }
+  }
+}

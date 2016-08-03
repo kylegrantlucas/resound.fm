@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>We're sorry, but something went wrong (808 Drum Error)</title>
+  <%= stylesheet_link_tag "404", media: "all" %>
+</head>
+
+<body>
+  <div class="drum-container">
+    <div class="dialog">
+      <h1>We couldn't find the page you were looking for.</h1>
+      <p>Please enjoy this 404 Drum Machine instead! <span class="take-me-back">(<a href="/feed">Take me back to the feed</a>)</span></p>
+
+    </div>
+    <div class="drums">
+      <h3>Drum Machine&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ER-404</h3>
+      <div class="drum-row">
+        <audio >
+          <source src="<%= asset_path('sound1.wav') %>" type="audio/wav">
+        </audio>
+        <span class="drum-name">Snap</span>
+        <input type="checkbox" class="snap"/>
+        <input type="checkbox" class="snap"/>
+        <input type="checkbox" class="snap"/>
+        <input type="checkbox" class="snap"/>
+        <input type="checkbox" class="snap"/>
+        <input type="checkbox" class="snap"/>
+        <input type="checkbox" class="snap"/>
+        <input type="checkbox" class="snap"/>
+        <input type="checkbox" class="snap"/>
+        <input type="checkbox" class="snap"/>
+        <input type="checkbox" class="snap"/>
+        <input type="checkbox" class="snap"/>
+        <input type="checkbox" class="snap"/>
+        <input type="checkbox" class="snap"/>
+        <input type="checkbox" class="snap"/>
+        <input type="checkbox" class="snap"/>
+      </div>
+      <div class="drum-row">
+        <audio >
+          <source src="<%= asset_path('sound2.wav') %>" type="audio/wav">
+        </audio>
+        <span class="drum-name">Snare</span>
+        <input type="checkbox" class="snare"/>
+        <input type="checkbox" class="snare"/>
+        <input type="checkbox" class="snare"/>
+        <input type="checkbox" class="snare"/>
+        <input type="checkbox" class="snare"/>
+        <input type="checkbox" class="snare"/>
+        <input type="checkbox" class="snare"/>
+        <input type="checkbox" class="snare"/>
+        <input type="checkbox" class="snare"/>
+        <input type="checkbox" class="snare"/>
+        <input type="checkbox" class="snare"/>
+        <input type="checkbox" class="snare"/>
+        <input type="checkbox" class="snare"/>
+        <input type="checkbox" class="snare"/>
+        <input type="checkbox" class="snare"/>
+        <input type="checkbox" class="snare"/>
+      </div>
+      <div class="drum-row">
+        <audio >
+          <source src="<%= asset_path('sound3.wav') %>" type="audio/wav">
+        </audio>
+        <span class="drum-name">Kick</span>
+        <input type="checkbox" class="kick"/>
+        <input type="checkbox" class="kick"/>
+        <input type="checkbox" class="kick"/>
+        <input type="checkbox" class="kick"/>
+        <input type="checkbox" class="kick"/>
+        <input type="checkbox" class="kick"/>
+        <input type="checkbox" class="kick"/>
+        <input type="checkbox" class="kick"/>
+        <input type="checkbox" class="kick"/>
+        <input type="checkbox" class="kick"/>
+        <input type="checkbox" class="kick"/>
+        <input type="checkbox" class="kick"/>
+        <input type="checkbox" class="kick"/>
+        <input type="checkbox" class="kick"/>
+        <input type="checkbox" class="kick"/>
+        <input type="checkbox" class="kick"/>
+      </div>
+      <div class="drum-row">
+        <audio >
+          <source src="<%= asset_path('sound4.wav') %>" type="audio/wav">
+        </audio>
+        <span class="drum-name">Clap</span>
+        <input type="checkbox" class="clap"/>
+        <input type="checkbox" class="clap"/>
+        <input type="checkbox" class="clap"/>
+        <input type="checkbox" class="clap"/>
+        <input type="checkbox" class="clap"/>
+        <input type="checkbox" class="clap"/>
+        <input type="checkbox" class="clap"/>
+        <input type="checkbox" class="clap"/>
+        <input type="checkbox" class="clap"/>
+        <input type="checkbox" class="clap"/>
+        <input type="checkbox" class="clap"/>
+        <input type="checkbox" class="clap"/>
+        <input type="checkbox" class="clap"/>
+        <input type="checkbox" class="clap"/>
+        <input type="checkbox" class="clap"/>
+        <input type="checkbox" class="clap"/>
+      </div>
+      <div class="button-row">
+        
+      </div>
+    </div>
+  </div>
+  <div class="shoutout">
+    Based on Jonas Grumann's <a href="http://codepen.io/jonigiuro/pen/bFoKn">codepen</a>.
+  </div>
+  
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script type="text/javascript">
+  // Shoutout to Jonas Grumann's!
+  // http://codepen.io/jonigiuro/pen/bFoKn
+  var Drums = function() {
+    var time = 128 // milliseconds
+    var counter = 0;
+    var rows = $('.drum-row');
+    this.init = function() {
+      var t = setInterval(function() {
+        
+        for (var i = 0, l = rows.length ; i < l ; i++) {
+          var currentRadio =  $(rows[i]).find('input').removeClass('active').eq(counter % 16);
+          currentRadio.addClass('active');
+          if((currentRadio).is(":checked")) {
+            var audio = currentRadio.parent().find('audio')[0];
+            audio.currentTime=0;
+            audio.play(); 
+          }
+        }
+        counter++;
+      }, time);
+    }
+    this.init();
+  };
+
+  var drums = new Drums();
+  </script>
+</body>
+</html>

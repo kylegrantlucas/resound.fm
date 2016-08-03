@@ -1,0 +1,24 @@
+<div id="track-form"></div>
+
+<% content_for :javascripts do %>
+  <script>
+    var TrackForm = require('app/components/TrackForm');
+    var PostQueue = require('app/collections/PostQueue');
+    var Player = require('app/lib/Player');
+    var User = require('app/models/User');
+
+    var UserFixture = require('app/fixtures/User');
+    var PostQueueFixture = require('app/fixtures/PostQueue');
+
+    var queue = new PostQueue(PostQueueFixture);
+    var player = new Player();
+    var curUser = new User(UserFixture);
+
+    player.setQueue(queue);
+
+    React.renderComponent(
+        new TrackForm({queue: queue, curUser: curUser, player: player}),
+        document.getElementById('track-form')
+    );
+  </script>
+<% end %>

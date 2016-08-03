@@ -1,0 +1,123 @@
+$album-art-size: 64px;
+$track-search-height: 80px;
+$track-result-height: 80px;
+
+.track-search {
+  position: relative;
+  display: block;
+  width: 100%;
+  font-weight: 300;
+
+  .right-inner-addon {
+    position: relative;
+  }
+  .right-inner-addon input {
+    padding: 6px 90px 8px 22px;
+  }
+
+  .right-inner-addon i {
+    position: absolute;
+    opacity: 0.8;
+    right: 0px;
+    font-size: 42px;
+    padding: 20px 20px;
+    pointer-events: none;
+
+    &.spinner-container {
+      top: 19px;
+      right: 40px;
+    }
+  }
+
+  input.search-box {
+    font-size: 42px;
+    color: white;
+    letter-spacing: 0.02em;
+    height: $track-search-height;
+    transition: none;
+    border: 0;
+    outline: none;
+    // Slightly blue because bada-de-bada-du-I'm-bluuue
+    background-color: rgba(250,250,255, 0.4);
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    @include input-placeholder {
+      color: white;
+    }
+  }
+
+  .search-results {
+    list-style: none;
+    margin: 0;
+    margin-top: 12px;
+    width: 100%;
+    padding: 0;
+    overflow: auto;
+    overflow-x: hidden;
+
+    li {
+      position: relative;
+      height: 90px;
+      border: 1px #ccc solid;
+      border-bottom: none;
+      padding: 10px;
+      cursor: pointer;
+
+      &:last-child {
+        border: 1px #ccc solid;
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+      }
+
+      &.selected {
+        background-color: rgba(255,255,255,0.3);
+      }
+
+      .thumb {
+        width: $album-art-size;
+        height: $album-art-size;
+        float: left;
+        position: absolute;
+        display: inline-block;
+      }
+
+      .track-source {
+        position: absolute;
+        padding-right: 15px;
+        top: 26px;
+        right: 6px;
+        opacity: 0.5;
+
+        img {
+          min-height: 34px;
+          width: 60px;
+        }
+      }
+
+      .info {
+        height: $track-result-height;
+        overflow: hidden;
+        padding: 4px 10px 4px ($album-art-size + 10px);
+        display: inline-block;
+
+        p {
+          margin: 0;
+          font-weight: 400;
+        }
+
+        .title {
+          font-size: 20px;
+        }
+
+        .artist {
+          font-size: 16;
+          color: #CECECE;
+        }
+      }
+    }
+  }
+}
+

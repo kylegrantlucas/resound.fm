@@ -1,0 +1,12 @@
+.nav-notifications-popover {
+  .new-popover {
+    width: 300px;
+  }
+}
+
+.new-popover {
+  .notifications-list {
+    max-height: 332px;
+    overflow-y: auto;
+  }
+}

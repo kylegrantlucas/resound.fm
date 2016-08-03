@@ -1,0 +1,27 @@
+a.like-btn {
+  color: #AAA;
+
+  i.fa-heart {
+    &:before {
+      content: "\f004";
+    }
+
+    &:hover:before {
+      content: "\f08a";
+    }
+  }
+
+  i.fa-heart-o {
+    &:before {
+      content: "\f08a";
+    }
+
+    &:hover:before {
+      content: "\f004";
+    }
+  }
+
+  &:hover {
+    color: $red;
+  }
+}

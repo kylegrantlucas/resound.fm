@@ -1,0 +1,53 @@
+.registration {
+  $width: 460px;
+
+  color: #555;
+  width: $width;
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  top: 65px;
+  margin-left: -($width/2);
+  background-color: #fff;
+  padding: 20px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  @include box-shadow(0 3px 3px rgba(0,0,0,.2));
+
+  form {
+    margin-top: 30px;
+
+    .form-group {
+      margin-top: 20px;
+    }
+
+    .error_explanation {
+      margin: 20px 0;
+
+      h4 {
+        color: $red;
+      }
+    }
+  }
+}
+
+.btn-block {
+  font-size: 1.4em;
+  line-height: 2em;
+}
+
+.full-mobile-modal {
+  background-color: white;
+  padding: 20px 30px 30px 30px;
+  @include posFixed(0, 0, 0, 0);
+  border: 25px solid $red;
+
+  h3 {
+    line-height: 1.2em;
+  }
+
+  h4 {
+    line-height: 1.3em;
+  }
+
+}

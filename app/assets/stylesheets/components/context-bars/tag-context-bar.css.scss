@@ -1,0 +1,22 @@
+
+.tag-context-bar {
+  width: 100%;
+  height: 50px;
+  background-color: $dark-panel-color;
+  color: white;
+  @include posFixed($navbar-height, 0, null, 0);
+
+  h1 {
+    font-size: 25px;
+    margin: 12px 0;
+    letter-spacing: 0.025em;
+  }
+
+  .hashtag-symbol {
+    color: rgba(255, 250, 250, 0.75);
+    padding-right: 4px;
+    font-weight: 600;
+  }
+
+
+}

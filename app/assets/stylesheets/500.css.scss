@@ -1,0 +1,118 @@
+@import "compass/css3";
+@import "compass/utilities/general/clearfix";
+@import "animation";
+@import "mixins";
+
+// Animations
+@include keyframes(blink) {
+  0%, 20% {
+    background-color: red;
+  }
+  80%, 100% {
+    background-color: #333;
+  }
+}
+
+html {
+  background-color: white;
+}
+
+body {
+  padding: 50px;
+  background-color: white;
+}
+
+h1, h2, h3, h4, p, a {
+  color: #333;
+  text-align: center;
+}
+
+h1 {
+  font-size: 6em;
+  font-weight: 800;
+}
+
+.wake-up-kyle {
+  margin-top: 100px;
+  color: #CCC;
+  font-style: italic;
+}
+
+.server-room {
+  position: relative;
+  height: 300px;
+}
+
+#smoke1 {
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  margin-top: -30px;
+}
+
+.server {
+  $server-width: 250px;
+  position: absolute;
+  width: $server-width;
+  left: 50%;
+  margin-left: -($server-width/2);
+  background-color: #555555;
+  padding: 10px;
+  margin-top: 50px;
+
+  .rack {
+    $rack-height: 40px;
+    $light-size: 10px;
+
+    width: 100%;
+    height: $rack-height;
+
+    .light {
+      width: $light-size;
+      height: $light-size;
+      margin: ($rack-height - $light-size)/2;
+      display: inline-block;
+      border-radius: 50%;
+      background-color: #2ECC71;
+
+      // background-color: red;
+      @include animation-name(blink);
+      @include animation-duration(1s);
+      @include animation-iteration-count(infinite);
+      @include animation-delay(999s);
+    }
+
+    .slot {
+      height: $light-size;
+      margin: ($rack-height - $light-size)/2 0;
+      width: 150px;
+      display: inline-block;
+      background-color: #333333;
+    }
+
+    &:nth-child(1) .light {
+      @include animation-delay(0.5s);
+    }
+
+    &:nth-child(2) .light {
+      @include animation-delay(3.8s);
+    }
+
+    &:nth-child(3) .light {
+      @include animation-delay(2.2s);
+    }
+
+    &:nth-child(4) .light {
+      @include animation-delay(7.6s);
+    }
+
+    &:nth-child(5) .light {
+      @include animation-delay(9.7s);
+    }
+    
+    &:nth-child(6) .light {
+      @include animation-delay(20s);
+      @include animation-duration(0.25s);
+    }
+  }
+}

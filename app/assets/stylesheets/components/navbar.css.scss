@@ -1,0 +1,163 @@
+@import "compass/css3/user-interface";
+
+.nav, .pagination, .carousel, .panel-title a {
+  cursor: pointer;
+}
+
+.navbar > .container .navbar-brand {
+  margin-left: 0;
+}
+
+.navbar {
+  background-image: linear-gradient(#cc1313, #AF282C);
+  height: $navbar-height;
+  border: 0;
+  border-radius: 0;
+  text-align: center;
+  @include box-shadow(0 0 3px #222);
+  @include user-select(none);
+
+  .navbar-toggle {
+    margin-top: 14px;
+  }
+
+  .navbar-brand {
+    @include background-image(image-url("logo_white.png"));
+    background-repeat: no-repeat;
+    background-position: 0 5px;
+    background-size: contain;
+    width: 150px;
+    height: 36px;
+    margin: 6px;
+  }
+  
+  .navbar-right > li {
+    padding: 9px 0 9px 9px;
+    position: relative;
+
+    &.new-post {
+      padding: 0;
+
+      a {
+        @include background-image(linear-gradient(#FF0000, #C70000));
+        box-shadow: #921116 0 2px 6px;
+        border-radius: 3px;
+        display: block;
+        color: #fff;
+        line-height: 36px;
+        text-decoration: none;
+        margin: 6px 14px;
+        padding: 0 8px;
+      }
+    }
+
+    &.notifications {
+      position: relative;
+
+      a.popover-link {
+        color: white;
+        display: block;
+        width: 32px;
+        height: 32px;
+        font-size: 20px;
+        padding: 0;
+        vertical-align: middle;
+        line-height: 30px;
+        border-radius: 3px;
+        @include text-shadow(1px 1px rgba(0,0,0,0.7));
+
+        span {
+          position: absolute;
+          top: 0;
+          right: 0;
+          font-size: 12px;
+          border-radius: 3px;
+          padding: 1px 3px;
+          @include box-shadow(0 1px 1px rgba(0, 0, 0, .7));
+          @include background-image(linear-gradient(-90deg, #65A6DF 0%, #428BCA 100%));
+        }
+
+        &:hover {
+          color: #ccc !important;
+          text-decoration: none;
+        }
+      }
+
+      .new-popover {
+        right: -30px
+      }
+    }
+  }
+
+  .dropdown {
+
+    .dropdown-toggle {
+      padding-right: 0;
+    }
+
+    .fa-gear {
+      color: #fff;
+      font-size: 30px;
+      line-height: 31px;
+    }
+  }
+
+  .navbar-collapse {
+    position: relative;
+  }
+
+  .navbar-toggle {
+    margin-top: 8px;
+  }
+
+  .center-nav {
+    list-style: none;
+    display: block;
+    height: 50px;
+    // overflow: hidden;
+    padding: 0;
+    @include text-shadow(0px 1px rgba(0,0,0,0.2));
+
+    .fa-compass {
+      font-size: 18px;
+      vertical-align: text-top;
+    }
+
+    .fa {
+      margin-right: 6px;
+    }
+
+    > li {
+      height: 54px;
+      display: inline-block;
+      text-align: center;
+      // transition: all .15s ease-in-out;
+      // border-bottom: 4px #fff solid;
+
+      &:hover, &.active {
+        a {
+          box-shadow: #e62d34 0 1px 1px, inset rgba(0,0,0,0.25) 0 1px 1px;
+          border-radius: 3px;
+        }
+      }
+
+      &.active a {
+        background-color: rgba(0,0,0,.1);
+      }
+
+      > a {
+        display: block;
+        color: #fff;
+        line-height: 36px;
+        text-decoration: none;
+        margin: 6px 14px;
+        padding: 0 8px;
+
+        &:hover {
+          background: none;
+        }
+      }
+    }
+  }
+
+}

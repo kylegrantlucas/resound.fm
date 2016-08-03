@@ -1,0 +1,18 @@
+<h1>Claim your username</h1>
+<form role="form" method='POST'>
+  <% if current_user.errors.any? %>
+  <div class="error_explanation">
+    <% current_user.errors[:username].each do |msg| %>
+      <h4><%= msg %></h4>
+    <% end %>
+  </div>
+  <% else %>
+  <h4>You can only do this once so choose wisely.</h4>
+  <% end %>
+  <div class="form-group input-group input-group-lg">
+    <span class="input-group-addon">resound.fm/users/</span>
+    <input type="text" class="form-control" name='username' spellcheck="false" autofocus value="<%= current_user.username %>">
+  </div>
+  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+  <button type="submit" class="btn btn-danger pull-right">Done!</button>
+</form>

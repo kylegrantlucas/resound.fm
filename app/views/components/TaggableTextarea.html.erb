@@ -1,0 +1,28 @@
+<style>
+  .evil-z-index-thing {
+    height: 200px;
+  }
+</style>
+
+<div class="form-container">
+  <div class="front">
+    <div id="textarea-test"></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="front">
+    <div class="evil-z-index-thing"></div>
+  </div>
+</div>
+
+<% content_for :javascripts do %>
+  <script>
+    var TaggableTextarea = require('app/components/TaggableTextarea');
+
+    React.renderComponent(
+        new TaggableTextarea({className: 'form-control', placeholder: "Tell people why you're posting this song :)"}),
+        document.getElementById('textarea-test')
+    );
+  </script>
+<% end %>

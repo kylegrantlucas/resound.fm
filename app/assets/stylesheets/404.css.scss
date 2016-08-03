@@ -1,0 +1,133 @@
+@import "compass/css3/box-shadow";
+@import "mixins";
+
+@mixin buildDrumClasses($drumName, $bg-color, $border-color, $border-width) {
+  &.#{$drumName} {
+
+    &:after {
+      background-color: $bg-color;
+      border: $border-width solid $border-color;
+      @include box-shadow(inset 0 0 8px rgba(0,0,0,0.10));
+    }
+
+    &:checked:after {
+      background-color: darken($bg-color, 6%);
+      @include box-shadow(inset 0 0 15px rgba(0,0,0,0.6));
+    }
+
+    &.active:after {
+      border-color: white;
+    }
+  }
+}
+
+body {
+  padding: 50px;
+}
+
+h1, h2, h3, p, a {
+  color: #FEFEFE;
+}
+
+.take-me-back {
+  color: #A9A9A9;
+  a {
+    color: #A9A9A9;
+    text-decoration: underline;
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+.shoutout {
+  @include posAbsolute(null, 20px, 20px, null);
+  color: #A9A9A9;
+  font-size: 0.85em;
+  a {
+    color: #CCC;
+  }
+}
+
+.drum-container {
+  $width: 900px;
+  width: 900px;
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  margin-left: -($width/2);
+}
+
+.drums {
+  $width: 900px;
+  $bg-color: #2E2F29;
+  box-sizing: border-box;
+  margin-top: 50px;
+  background-color: $bg-color;
+  width: $width;
+  border-radius: 16px;
+
+  @include box-shadow(0 8px 35px rgba(0,0,10,0.25));
+  @include box-shadow(inset 0 -3px 45px rgba(8,5,5,0.15));
+  border: 10px solid darken($bg-color, 6%);
+
+  h3 {
+    color: #EE7C22;
+    text-transform: uppercase;
+    text-align: right;
+    border-bottom: 1px solid #EE7C22;
+    padding: 10px 20px;
+    margin-bottom: 0;
+  }
+}
+
+
+.drum-row {
+  padding: 15px 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.8);
+
+  &:first-child {
+    border-top: 0px;
+  }
+  
+  .drum-name {
+    display: block;
+    width: 80px;
+    color: #FEFEFE;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 100;
+    float: left;
+    padding: 5px 16px;
+  }
+
+  input {
+    $size: 42px;
+    display: block;
+    position: relative;
+    float: left;
+    padding: 0px;
+    width: $size;
+    height: $size + 10px;
+    margin-right: 6px;
+    @include box-shadow(0 2px 6px rgba(0,0,0,0.4));
+    
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 4px;      
+    }
+
+    $border-width: 3px;
+    @include buildDrumClasses('snap', #E73126, #FC3324, $border-width);
+    @include buildDrumClasses('snare', #ED7B22, #F67D21, $border-width);
+    @include buildDrumClasses('kick', #FEDD32, #FFE737, $border-width);
+    @include buildDrumClasses('clap', #FFE8B4, #FFFFC6, $border-width);
+  }
+}

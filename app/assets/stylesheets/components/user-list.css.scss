@@ -1,0 +1,86 @@
+.user-list {
+  $list-item-height: 70px;
+  $user-image-size: 50px;
+  $aprox-follow-btn-width: 91px;
+  $padding: ($list-item-height - $user-image-size) / 2;
+  max-width: 800px;
+  margin: 20px auto 0 auto;
+  border-radius: 2px;
+
+  .follow-all-btn-container {
+    height: 50px;
+  }
+
+  li {
+    height: 70px;
+    background-color: white;
+    padding: $padding;
+    margin: 0;
+    border-bottom: 1px solid $lightest-grey;
+
+    .user-image-container {
+      float: left;
+
+      img.user-image {
+        @include circle-user-icon($user-image-size);
+      }
+    }
+
+    .user-info {
+      margin-left: $user-image-size + $padding;
+      margin-right: $aprox-follow-btn-width + $padding;
+    }
+
+    .top-half {
+      display: block;
+
+      .user-name-container {
+        display: inline-block;
+        vertical-align: bottom;
+
+        // Fix the cursor when user links are disabled
+        &.no-link .user-name{
+          cursor: default;
+        }
+      }
+
+      .user-name {
+        margin: 0;
+        color: $dark-grey;
+      }
+
+      .followers-info {
+        display: inline-block;
+        vertical-align: bottom;
+        margin: 0 0 0 10px;
+        text-transform: uppercase;
+        color: $light-grey;
+        font-size: 0.9em;
+      }
+    }
+
+    .bottom-half {
+      display: block;
+      .bio {
+        display: inline-block;
+      }
+    }
+
+    .follow-btn {
+      float: right;
+      margin-top: 10px;
+      margin-left: $padding;
+    }
+  }
+
+  .no-users {
+    position: fixed;
+    width: 650px;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    margin-left: -325px;
+    color: white;
+    @include text-shadow(1px 1px rgba(33, 33, 33, 0.5));
+  }
+}

@@ -1,0 +1,32 @@
+.footer-like-btn {
+  color: $red;
+  font-size: 36px;
+  margin-right: 5px;
+  vertical-align: middle;
+  text-decoration: none;
+  width: 36px;
+  text-align: center;
+  cursor: pointer;
+
+  &.fa-heart {
+    &:before {
+      color: $red;
+      content: "\f004";
+    }
+
+    &:hover:before {
+      content: "\f08a";
+    }
+  }
+
+  &.fa-heart-o {
+    &:before {
+      content: "\f08a";
+    }
+
+    &:hover:before {
+      color: $red;
+      content: "\f004";
+    }
+  }
+}

@@ -1,0 +1,77 @@
+.search-bar-container {
+
+  $avatar-size         : 50px;
+  $album-art-size      : 50px;
+  $track-search-height : $avatar-size;
+  $track-result-height : $album-art-size;
+
+  width: 100%;
+  padding-left: 196px;  // lame way of getting search to center for now
+  padding-right: 196px; // width of bell, post button, and avatar
+
+  .search-bar-content {
+    width: 100%;
+    max-width: $card-width;
+    margin: 0 auto;
+  }
+
+  $search-button-width: 80px;
+  .search-button {
+    float: right;
+    width: $search-button-width;
+    margin: 9px 0;
+  }
+
+  .search-bar {
+    $search-bar-padding: 8px;
+    height: $avatar-size;
+    padding: 8px;
+    padding-right: $search-button-width + 6px; 
+    text-align: left;
+
+    .search-box {
+      &.loading {
+        background: #fff url('line-loader.gif') no-repeat center center;
+      }
+    }
+
+    .search-results {
+      position: absolute;
+      list-style: none;
+      margin: 0;
+      padding-left: 0;
+      width: $card-width - $search-button-width - (2 * $search-bar-padding);
+
+      li {
+        height: $album-art-size + 1px;
+        background: #fff;
+        border: 1px #ccc solid;
+        border-top: 0;
+
+        &.selected {
+          background-color: #ccc;
+        }
+
+        img {
+          width: $avatar-size;
+          height: $avatar-size;
+          float: left;
+          position: absolute;
+          display: inline-block;
+        }
+
+        .info {
+          width: 100%;
+          height: $track-result-height;
+          overflow: hidden;
+          padding: 4px 10px 4px ($avatar-size + 10px);
+          display: inline-block;
+
+          p {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+}

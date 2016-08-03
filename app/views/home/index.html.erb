@@ -1,0 +1,162 @@
+  <div id="fb-root"></div>
+  <script type="text/javascript">
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '<%= ENV['FACEBOOK_KEY'] %>',
+        status     : true,
+        cookie     : true,
+        xfbml      : true
+      });
+
+      $(function() {
+        $('.facebook-connect').on('click touchend', function(e) {
+          e.preventDefault();
+
+          ga('send', 'event', 'Landing', 'FB login clicked', $(e.target).data('location'));
+
+          FB.login(function(response) {
+            if (response.authResponse) {
+              window.location = '/auth/facebook/callback'
+            }
+          }, { scope: '<%= ENV['FACEBOOK_SCOPE'] %>' });
+        });
+      });
+    };
+
+    (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
+
+  <div class="main">
+    <!-- INTRO -->
+    <section class="intro section">
+      <div class="bg-image"></div>
+      <div class="container hero-box left-align">
+        <div class="hero-header v-middle nudge-up">
+          <div class="logo-container">
+            <img class="logo animation" alt="resound.fm Logo" title="resound.fm" src="<%= image_url('logo_white_solid@2x.png') %>"/>               
+          </div>
+          <h1 class="center-align animation">Music that matters.</h1>
+          <h2 class="center-align animation">Share and discover your next favorite song.</h2>
+          <div class="join-button-container animation">
+            <button class="facebook-connect" data-location='Top'>
+              <i class="facebook-icon fa fa-facebook"></i>Get started
+            </button>
+          </div>
+        </div>
+      </div>
+      <%= render partial: "nav", locals: {classes: "animation"} %>
+      <div class="down-arrow animation"></div>
+    </section>
+    <!-- DISCOVER -->
+    <section class="discover section blackness">
+      <div class="container hero-box">
+        <div class="hero-header v-middle nudge-up">
+          <h1>Don’t trust us,<br/>trust your friends.</h1>
+          <h3>We believe that the best music is found through friends.<br/>resound.fm is a place to share the songs that you love, and follow your friends to discover the music that they care about.
+            <!-- Music is something that brings us together and is meant to be shared. -->
+          </h3>
+        </div>
+      </div>
+      <div class="faces faces-group-1">
+        <div class="face face-large face-a">
+          <div class="face-ripple"></div>
+          <%= image_tag "faces/ky.jpg" %>
+        </div>
+        <div class="face face-small face-b">
+          <div class="face-ripple"></div>
+          <%= image_tag "faces/cas.jpg" %>
+        </div>
+        <div class="face face-medium face-c">
+          <div class="face-ripple"></div>
+          <%= image_tag "faces/nat.jpg" %>
+        </div>
+      </div>
+      <div class="faces faces-group-2">
+        <div class="face face-large face-b">
+          <div class="face-ripple"></div>
+          <%= image_tag "faces/han.jpg" %>
+        </div>
+        <div class="face face-small face-a">
+          <div class="face-ripple"></div>
+          <%= image_tag "faces/aar.jpg" %>
+        </div>
+        <div class="face face-medium face-c">
+          <div class="face-ripple"></div>
+          <%= image_tag "faces/jes.jpg" %>
+        </div>
+      </div>
+      <div class="faces faces-group-3">
+        <div class="face face-medium face-a">
+          <div class="face-ripple"></div>
+          <%= image_tag "faces/sara.jpg" %>
+        </div>
+        <div class="face face-medium face-b">
+          <div class="face-ripple"></div>
+          <%= image_tag "faces/rob.jpg" %>
+        </div>
+      </div>
+      <div class="down-arrow animation"></div>
+    </section>
+    <!-- SHARE -->
+    <section class="share section blackness">
+      <div class="container hero-box">
+        <div class="hero-header v-middle nudge-up">
+          <h1 class="centered">Music defines us.</h1>
+          <h3 class="centered">Share what moves you, what fills you with joy, sadness, and life. Explore, save, and fall in love with music that matters.</h2> 
+          </div>
+        </div>
+        <div class="albums album-group-1">
+          <img class="album album-large album-a" src="<%= image_url('albums/Broken Bells.jpg') %>"/>
+          <img class="album album-small album-b" src="<%= image_url('albums/Grieves.jpg') %>"/>
+          <img class="album album-medium album-c" src="<%= image_url('albums/Born To Die.jpg') %>"/>
+          <img class="album album-medium album-d" src="<%= image_url('albums/Soak.jpg') %>"/>
+          <img class="album album-medium album-e" src="<%= image_url('albums/RAC.jpg') %>"/>
+          <img class="album album-small album-f" src="<%= image_url('albums/Flume.jpg') %>"/>
+        </div>
+        <div class="albums album-group-2">
+          <img class="album album-large album-a" src="<%= image_url('albums/Chvrches.jpg') %>"/>
+          <img class="album album-medium album-b" src="<%= image_url('albums/High Season.jpg') %>"/>
+          <img class="album album-medium album-c" src="<%= image_url('albums/Sam Smith.jpg') %>"/>
+          <img class="album album-small album-d" src="<%= image_url('albums/EdSheeran.jpg') %>"/>
+        </div>
+        <div class="down-arrow animation"></div>
+      </section>
+      <!-- JOIN -->
+      <section class="join section">
+        <%= render partial: "nav", :classes => 'animation' %>
+        <div class="container hero-box">
+          <div class="hero-header">
+            <div class="logo-container">
+              <img class="logo" alt="resound.fm Logo" title="resound.fm" src="<%= image_url('logo_white@2x.png') %>"/>  
+            </div>
+            <div class="">
+              <h2>Find your next favorite song.</h2>
+            </div>
+            <div class="join-button-container">
+              <button class="facebook-connect" data-location='Bottom'>
+                <i class="facebook-icon fa fa-facebook"></i>Get started
+              </button>
+            </div>
+          </div> 
+        </div>
+        <div class="bottom-half">
+          <div class="cards-container">
+            <div class="card left">
+              <%= image_tag('card2.jpg') %>
+            </div>
+            <div class="card right">
+              <%= image_tag('card3.jpg') %>
+            </div>
+            <div class="card center">
+              <%= image_tag('card1.jpg') %>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>

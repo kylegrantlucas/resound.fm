@@ -1,0 +1,151 @@
+/*! tooltip 0.1.0 - 18th Dec 2013 | https://github.com/darsain/tooltip */
+.g-tooltip {
+  position: absolute;
+  padding: .8em 1em;
+  top: 10px; /* Defines the spacing between tooltip and target position */
+  //max-width: 200px;
+  color: #fff;
+  background: #3a3c47;
+  border-radius: 2px;
+  text-shadow: -1px -1px 0 rgba(0,0,0,.2);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  z-index: 1000;
+
+  /* Arrow styles */
+  &:after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    margin: -5px;
+    background: inherit;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+ &.top:after,&.top-left:after,&.top-right:after { bottom: 0; }
+ &.bottom:after,&.bottom-left:after,&.bottom-right:after { top: 0; }
+ &.top:after,&.bottom:after { left: 50%; }
+ &.top-left:after,&.bottom-left:after { right: 15px; }
+ &.top-right:after,&.bottom-right:after { left: 15px; }
+
+ &.left:after,&.left-top:after,&.left-bottom:after { right: 0; }
+ &.right:after,&.right-top:after,&.right-bottom:after { left: 0; }
+ &.left:after,&.right:after { top: 50%; }
+ &.left-top:after,&.right-top:after { bottom: 15px; }
+ &.left-bottom:after,&.right-bottom:after { top: 15px; }
+
+  /* Fade */
+ &.fade { opacity: 0; transition: opacity 200ms ease-out; }
+ &.fade.in { opacity: 1; transition-duration: 100ms; }
+
+  /* Slide */
+ &.slide {
+    opacity: 0;
+    transition: -webkit-transform 200ms ease-out;
+    transition: transform 200ms ease-out;
+    transition-property: -webkit-transform, opacity;
+    transition-property: transform, opacity;
+  }
+ &.slide.top,
+ &.slide.top-left,
+ &.slide.top-right {
+    -webkit-transform: translateY(15px);
+    transform: translateY(15px);
+  }
+ &.slide.bottom,
+ &.slide.bottom-left,
+ &.slide.bottom-right {
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+ &.slide.left,
+ &.slide.left-top,
+ &.slide.left-bottom {
+    -webkit-transform: translateX(15px);
+    transform: translateX(15px);
+  }
+ &.slide.right,
+ &.slide.right-top,
+ &.slide.right-bottom {
+    -webkit-transform: translateX(-15px);
+    transform: translateX(-15px);
+  }
+ &.slide.in {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+    transition-duration: 100ms;
+  }
+
+  /* Grow */
+ &.grow {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    transition: -webkit-transform 200ms ease-out;
+    transition: transform 200ms ease-out;
+  }
+ &.grow.top {
+    -webkit-transform: translateY(60%) scale(0);
+    transform: translateY(60%) scale(0);
+  }
+ &.grow.top-left {
+    -webkit-transform: translateY(60%) translateX(40%) scale(0);
+    transform: translateY(60%) translateX(40%) scale(0);
+  }
+ &.grow.top-right {
+    -webkit-transform: translateY(60%) translateX(-40%) scale(0);
+    transform: translateY(60%) translateX(-40%) scale(0);
+  }
+ &.grow.bottom {
+    -webkit-transform: translateY(-60%) scale(0);
+    transform: translateY(-60%) scale(0);
+  }
+ &.grow.bottom-left {
+    -webkit-transform: translateY(-60%) translateX(40%) scale(0);
+    transform: translateY(-60%) translateX(40%) scale(0);
+  }
+ &.grow.bottom-right {
+    -webkit-transform: translateY(-60%) translateX(-40%) scale(0);
+    transform: translateY(-60%) translateX(-40%) scale(0);
+  }
+ &.grow.left {
+    -webkit-transform: translateX(53%) scale(0);
+    transform: translateX(53%) scale(0);
+  }
+ &.grow.left-top {
+    -webkit-transform: translateX(53%) translateY(40%) scale(0);
+    transform: translateX(53%) translateY(40%) scale(0);
+  }
+ &.grow.left-bottom {
+    -webkit-transform: translateX(53%) translateY(-40%) scale(0);
+    transform: translateX(53%) translateY(-40%) scale(0);
+  }
+ &.grow.right {
+    -webkit-transform: translateX(-53%) scale(0);
+    transform: translateX(-53%) scale(0);
+  }
+ &.grow.right-top {
+    -webkit-transform: translateX(-53%) translateY(40%) scale(0);
+    transform: translateX(-53%) translateY(40%) scale(0);
+  }
+ &.grow.right-bottom {
+    -webkit-transform: translateX(-53%) translateY(-40%) scale(0);
+    transform: translateX(-53%) translateY(-40%) scale(0);
+  }
+ &.grow.in {
+    -webkit-transform: none;
+    transform: none;
+    transition-duration: 100ms;
+  }
+
+  /* Types */
+ &.light { color: #3a3c47; background: #fff; text-shadow: none; }
+ &.success { background: #8dc572; }
+ &.warning { background: #ddc12e; }
+ &.error { background: #be6464; }
+}

@@ -1,0 +1,50 @@
+@import "compass/css3";
+
+html, body {
+  height: 100%;
+  font-size: 20px;
+}
+
+html {
+  background-color: #F15F5A;
+}
+
+body {
+  opacity: 0;
+  @include transition(opacity 0.5s);
+}
+
+.nav ul > li > a {
+  opacity: 0.85;
+}
+
+li {
+  font-size: 12px;
+}
+
+li ul, li ol {
+  margin:0 1.5em;
+}
+ul, ol {
+  margin:0 1.5em 1.5em 1.5em;
+}
+ul {
+  list-style-type:disc;
+}
+
+ol {
+  list-style: lower-alpha;
+}
+
+ol ol {
+  list-style: lower-roman;
+}
+
+.wrap {
+  background-color: white;
+}
+
+.legalease {
+  padding: 5% 10%;
+  box-sizing: border-box;
+}
